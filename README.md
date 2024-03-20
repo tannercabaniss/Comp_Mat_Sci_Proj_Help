@@ -15,3 +15,15 @@ Once the initial simulations have been run and the narrowed range for potentials
 depending on the narrowness of the potentials' search range, taking between 30 and 60 more data points to generate a model
 which adequately generalizes the relationships between the chemical potentials and the resulting concentrations. Again,
 see the data file 'data.txt' that I have provided for example of the minimum which may be required for accurate results.
+The more centered your data points are around the target, the better the model will learn, and the more accurate the
+predictions will be.
+
+# Models
+After rounds of refining and tuning, I determined the two best approaches were random forest and a variation of gradient boosting.
+While these approaches contain models for classification as well as regression, we will only be using the latter in this case.
+Please see the following links for more information about those approaches if you wish.
+* Random Forest: https://builtin.com/data-science/random-forest-python
+* Xtreme Gradient Boosting: https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/
+
+## Random Forest Regressor (RFR)
+I have included two different RFR models in the relavant source code file [](HfNbTi_Potentials RandomForest.py)
