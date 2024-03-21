@@ -37,7 +37,7 @@ base_model = xgb.XGBRegressor(objective="reg:squarederror", random_state=42)
 
 # Define the Random Forest model for Random Search
 random_search_model = HalvingRandomSearchCV(estimator=base_model, param_distributions=param_grid_random,
-                                         scoring='explained_variance', verbose=1, random_state=42, factor=2, cv=2)
+                                         scoring='neg_mean_squared_error', verbose=1, random_state=42, factor=2, cv=2)
 
 # Fit the base model to the training data
 base_model.fit(X_train, y_train)
