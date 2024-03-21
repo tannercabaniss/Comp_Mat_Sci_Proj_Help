@@ -1,6 +1,6 @@
 # Data
 The data required for these models is designed to be in plain text formatting. This includes .txt file such as the
-data.txt file in this repository or any other plain text file such as the statistics.dat file provided in this repository.
+[data.txt](data.txt) file in this repository or any other plain text file such as the [statistics.dat](statistics.dat) file provided in this repository.
 While the two forementioned data files represent a near minimum number of samples required to make accurate estimations
 with this model, they were helpful in tuning the models to their current state.
 
