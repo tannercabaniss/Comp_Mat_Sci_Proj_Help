@@ -122,7 +122,7 @@ for their respective performance on the training and testing datasets. There are
 see: overfitting and underfitting. Overfitting is when the model fits too aggressively to the training dataset and
 does not generalize to the testing dataset. This is seen as the evalution metrics for the training data being much
 better than those of the testing data. Typically, this can be avoided by altering the parameter ranges
-for the hyperparameters. It can take many iterations to get this right, but use small changes and keep track of the
+for the hyperparameters. It can take many iterations to get this right but use small changes and keep track of the
 previous state in case the modifications made do not have the desired effect.
 
 Underfitting is shown as the both the training data and testing data having poor evalution metrics such as high
@@ -189,8 +189,8 @@ Their main functionalities are outlined below:
 ### Model Setup and Fitment (Lines 36-46)
 The base model (line 36) should not be altered as a baseline is essential for determining the effects of 
 hyperparameter tuning. The tuned model (line 39) utilizes halving random search with cross validation as previously 
-described. The 'estimator' and 'param_distributions' should not be altered. The scoring used here is the explained 
-variance. This scoring method can be altered if the model is not performing well. Please see the previous 
+described. The 'estimator' and 'param_distributions' should not be altered. The scoring used here is the negative 
+mean squared error. This scoring method can be altered if the model is not performing well. Please see the previous 
 documentation in the hyperparameter section for more information. The verbose parameter 
 determines how much print output there is as the model is running. You can change it to 0 if you don't want any 
 printout, but I would suggest against altering it to 2 as that results in lots of excess print output that is not 
@@ -215,7 +215,7 @@ in this section.
 This section is used to inversely predict inputs (chemical potentials) from a predescribed output (equal 
 concentration). Two different modifications which may be needed in this section are the 'method' for the minimize
 function and the target value. The minimize function determines the input values which result in the minimization
-of the objective function (lines 106-107). The minimize function itself uses a specific method for determining
+of the objective function (lines 107-108). The minimize function itself uses a specific method for determining
 which values to try next on its path towards minimization. In the current code, this method is 'Nelder-Mead', but 
 many other options are avaiable and may be better in minimizing the objective function. Please see the link
 for more information: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
@@ -223,7 +223,7 @@ for more information: https://docs.scipy.org/doc/scipy/reference/generated/scipy
 The target value is the equal concentration of each element in the alloy. This is determined as part of the objective
 function in line 107 and in the desired_output variable in line 110. If you are working with a 3 element alloy, as the
 one in the example data, these values will all be 0.333. If you are using a 4 element alloy with 4 resulting
-concentrations, this value would need to be changed to 0.25 everywhere there is as 0.333 in lines 107 and 110. If a
+concentrations, this value would need to be changed to 0.25 everywhere there is as 0.333 in lines 108 and 111. If a
 5 element alloy is being evaluated the value would be changed to 0.2 and so on.
 
 ### Tuning the Model
@@ -233,11 +233,11 @@ for their respective performance on the training and testing datasets. There are
 see: overfitting and underfitting. Overfitting is when the model fits too aggressively to the training dataset and
 does not generalize to the testing dataset. This is seen as the evalution metrics for the training data being much
 better than those of the testing data. Typically, this can be avoided by altering the parameter ranges
-for the hyperparameters. It can take many iterations to get this right, but use small changes and keep track of the
+for the hyperparameters. It can take many iterations to get this right but use small changes and keep track of the
 previous state in case the modifications made do not have the desired effect.
 
 Underfitting is shown as the both the training data and testing data having poor evalution metrics such as high
 mean squared error values or low R-squred values. Underfitting can be solved by increasing max depth or reducing min
 samples split or min samples leaf. However, if these modifications are already maxed out (i.e., max_depth = None, 
-min_sample_split = 2, and min_samples_leaf = 1) then often times more datapoints are needed or the dataset needs
-refinement (e.g., remove values that do not provide adequate information such as concentrations of 0).
+colsample_bytree = 1, min_child_weight = 1, and gamma = 0.0001) then often times more datapoints are needed or the 
+dataset needs refinement (e.g., remove values that do not provide adequate information such as concentrations of 0).
