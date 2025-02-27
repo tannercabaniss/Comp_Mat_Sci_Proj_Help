@@ -26,7 +26,7 @@ Please see the following links for more information about those approaches if yo
 * Xtreme Gradient Boosting: https://machinelearningmastery.com/extreme-gradient-boosting-ensemble-in-python/
 
 ## Random Forest Regressor (RFR)
-I have included two different RFR models in the relavant source code file [RFR](HfNbTi_Potentials_RandomForest.py).
+I have included two different RFR models in the relevant source code file [RFR](HfNbTi_Potentials_RandomForest.py).
 The first is a base model which has default hyperparameters and does not utilize cross validation during training.
 The second is a model which uses halving random search with cross validation to test many hyperparameter combinations
 and determine the optimal combination.
@@ -132,7 +132,7 @@ min_sample_split = 2, and min_samples_leaf = 1) then often times more datapoints
 refinement (e.g., remove values that do not provide adequate information such as concentrations of 0).
 
 ## Xtreme Gradient Boosting (XGB)
-I have included two different XGB models in the relavant source code file [XGB](HfNbTi_Potentials_XGBoost.py).
+I have included two different XGB models in the relevant source code file [XGB](HfNbTi_Potentials_XGBoost.py).
 The first is a base model which has default hyperparameters and does not utilize cross validation during training.
 The second is a model which uses halving random search with cross validation to test many hyperparameter combinations
 and determine the optimal combination.
